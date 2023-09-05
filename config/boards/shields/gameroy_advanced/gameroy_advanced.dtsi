@@ -44,7 +44,7 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) 						RC(4,8)                     RC(4,9)       
 		label = "LEFT_ENCODER";
 		a-gpios = <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 		b-gpios = <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		resolution = <1>;
+        steps = <80>;
 		status = "disabled";
 	};
 	
@@ -53,12 +53,13 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) 						RC(4,8)                     RC(4,9)       
 		label = "RIGHT_ENCODER";
 		a-gpios = <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 		b-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		resolution = <1>;
+        steps = <80>;
 		status = "disabled";
 	};
 
-	sensors {
-		compatible = "zmk,keymap-sensors";
-		sensors = <&left_encoder &right_encoder>;
-	};
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder &right_encoder>;
+        triggers-per-rotation = <20>;
+    };
 };
